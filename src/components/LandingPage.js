@@ -418,30 +418,45 @@ const LandingPage = () => {
       {/* Chat Interface Modal */}
       {showChat && (
         <div
-          className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-end md:items-center justify-center p-4"
+          className="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-end md:items-center justify-center p-0 sm:p-4 animate-fade-in"
           onClick={() => setShowChat(false)}
         >
           <div
-            className="bg-white rounded-t-lg md:rounded-lg shadow-2xl w-full max-w-4xl h-[90vh] md:h-[85vh] flex flex-col"
+            className="bg-white rounded-t-3xl md:rounded-3xl shadow-2xl w-full h-full md:h-[90vh] md:max-h-[900px] max-w-5xl md:w-full flex flex-col overflow-hidden animate-slide-up"
             onClick={(e) => e.stopPropagation()}
           >
-            <div className="flex items-center justify-between p-4 border-b border-gray-200 bg-crisis-blue-600 text-white rounded-t-lg">
-              <div className="flex items-center space-x-3">
-                <FaShieldAlt className="text-2xl" />
+            {/* Chat Header */}
+            <div className="flex items-center justify-between px-5 sm:px-6 md:px-8 py-5 border-b border-white/20 bg-gradient-to-r from-indigo-600 via-purple-600 to-indigo-700 text-white shadow-2xl relative overflow-hidden">
+              {/* Animated background */}
+              <div className="absolute inset-0 bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 opacity-50 animate-gradient-x"></div>
+              <div className="absolute inset-0 opacity-10" style={{
+                backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
+                backgroundSize: '60px 60px'
+              }}></div>
+              
+              <div className="flex items-center space-x-3 sm:space-x-4 relative z-10">
+                <div className="w-12 h-12 sm:w-14 sm:h-14 bg-white/20 rounded-2xl flex items-center justify-center backdrop-blur-md border-2 border-white/30 shadow-xl ring-2 ring-white/20">
+                  <FaShieldAlt className="text-xl sm:text-2xl" />
+                </div>
                 <div>
-                  <h3 className="font-bold text-lg">CrisisAssist Chat</h3>
-                  <p className="text-sm text-crisis-blue-100">Emergency Response Assistant</p>
+                  <h3 className="font-extrabold text-lg sm:text-xl md:text-2xl bg-gradient-to-r from-white to-indigo-100 bg-clip-text text-transparent">
+                    CrisisAssist
+                  </h3>
+                  <p className="text-xs sm:text-sm text-white/90 font-medium flex items-center space-x-1.5">
+                    <span className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></span>
+                    <span>AI Emergency Assistant</span>
+                  </p>
                 </div>
               </div>
               <button
                 onClick={() => setShowChat(false)}
-                className="text-white hover:text-crisis-blue-200 transition-colors text-3xl font-light leading-none"
+                className="w-10 h-10 sm:w-12 sm:h-12 rounded-2xl bg-white/10 hover:bg-white/20 backdrop-blur-md transition-all duration-300 flex items-center justify-center text-white hover:scale-110 active:scale-95 focus:outline-none focus:ring-2 focus:ring-white/50 border border-white/20 shadow-lg relative z-10"
                 aria-label="Close chat"
               >
-                ×
+                <span className="text-2xl sm:text-3xl font-light leading-none">×</span>
               </button>
             </div>
-            <div className="flex-1 overflow-hidden">
+            <div className="flex-1 overflow-hidden bg-white">
               <ChatInterface />
             </div>
           </div>

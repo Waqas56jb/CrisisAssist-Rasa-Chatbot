@@ -19,6 +19,12 @@ module.exports = {
           800: '#1e40af',
           900: '#1e3a8a',
         },
+        'premium': {
+          'purple': '#6366f1',
+          'indigo': '#4f46e5',
+          'blue': '#3b82f6',
+          'cyan': '#06b6d4',
+        },
         'crisis-red': {
           500: '#ef4444',
           600: '#dc2626',

@@ -4,12 +4,9 @@ import MessageInput from './MessageInput';
 import LocationDetector from './LocationDetector';
 import CrisisTypeSelector from './CrisisTypeSelector';
 import RiskAssessment from './RiskAssessment';
-import InformationCarousel from './InformationCarousel';
 import HumanHandover from './HumanHandover';
 import SafetyAlert from './SafetyAlert';
-import QuickReplies from './QuickReplies';
-import { FaRobot, FaUser } from 'react-icons/fa';
-import axios from 'axios';
+import { FaRobot } from 'react-icons/fa';
 
 const ChatInterface = () => {
   const [messages, setMessages] = useState([
@@ -28,10 +25,7 @@ const ChatInterface = () => {
     },
   ]);
   const [isTyping, setIsTyping] = useState(false);
-  const [userLocation, setUserLocation] = useState(null);
   const [crisisType, setCrisisType] = useState(null);
-  const [riskLevel, setRiskLevel] = useState(null);
-  const [conversationState, setConversationState] = useState('initial');
   const [showLocationDetector, setShowLocationDetector] = useState(false);
   const [showCrisisSelector, setShowCrisisSelector] = useState(false);
   const [showRiskAssessment, setShowRiskAssessment] = useState(false);
@@ -91,7 +85,6 @@ const ChatInterface = () => {
     if (lowerText.includes('earthquake') || lowerText.includes('flood') || 
         lowerText.includes('wildfire') || lowerText.includes('emergency')) {
       setCrisisType(text);
-      setConversationState('crisis_identified');
       addMessage(
         `I understand you're experiencing a ${text}. Let me help you assess the situation.`,
         'bot'
@@ -173,7 +166,6 @@ const ChatInterface = () => {
   };
 
   const handleLocationSet = (location) => {
-    setUserLocation(location);
     setShowLocationDetector(false);
     addMessage(
       `Location set: ${location.address || location.coords ? 'GPS Location' : 'Manual Entry'}`,
@@ -186,7 +178,6 @@ const ChatInterface = () => {
   };
 
   const handleRiskAssessmentComplete = (riskData) => {
-    setRiskLevel(riskData.level);
     setShowRiskAssessment(false);
     
     const alertMessage = riskData.level === 'high' 
@@ -247,7 +238,7 @@ const ChatInterface = () => {
   };
 
   return (
-    <div className="flex flex-col h-[calc(100vh-80px)] max-w-4xl mx-auto w-full">
+    <div className="flex flex-col h-full w-full">
       {/* Safety Alerts */}
       {safetyAlerts.length > 0 && (
         <div className="px-4 pt-4 space-y-2">

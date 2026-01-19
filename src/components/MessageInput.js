@@ -62,7 +62,6 @@ const MessageInput = ({ onSend }) => {
     <form
       onSubmit={handleSubmit}
       className="flex items-end space-x-2"
-      role="form"
       aria-label="Message input"
     >
       <div className="flex-1 relative">

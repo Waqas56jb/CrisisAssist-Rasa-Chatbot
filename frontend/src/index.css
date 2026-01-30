@@ -1,0 +1,62 @@
+:root {
+  font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  line-height: 1.6;
+  font-weight: 400;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  /* Blue & White Theme */
+  --bg: #ffffff;
+  --surface: #f8fafc;
+  --surface-elevated: #ffffff;
+  --border: #e2e8f0;
+  --text: #1e293b;
+  --text-muted: #64748b;
+  --accent: #2563eb;
+  --accent-light: #3b82f6;
+  --accent-dark: #1e40af;
+  --blue-50: #eff6ff;
+  --blue-100: #dbeafe;
+  --blue-500: #3b82f6;
+  --blue-600: #2563eb;
+  --blue-700: #1d4ed8;
+  --white: #ffffff;
+  --radius: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --shadow: 0 4px 20px rgba(37, 99, 235, 0.08);
+  --shadow-lg: 0 12px 40px rgba(37, 99, 235, 0.12);
+  --shadow-xl: 0 20px 60px rgba(37, 99, 235, 0.15);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  background: var(--bg);
+  color: var(--text);
+}
+
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Light theme is default - keeping blue/white theme */
+
+@media (max-width: 768px) {
+  :root {
+    font-size: 15px;
+  }
+}
